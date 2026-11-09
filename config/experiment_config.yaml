@@ -1,0 +1,109 @@
+project:
+  name: "llm-reliability-humaneval"
+  title: "The Limits of LLM Reliability: Evaluating the Functional Correctness and Explanatory Accuracy of Large Language Models in Algorithmic Problem-Solving"
+  course: "Assignment 4"
+  group: "SE-2414"
+  authors:
+    - "Ibragim Nurkassym"
+    - "Orken Zhilkibek"
+    - "Zhandos Tenglesbayev"
+
+dataset:
+  name: "openai_humaneval"
+  version: "1.0.0"
+  split: "test"
+  total_tasks: 164
+  sha256: "7b3c9e4a1f8d209b5e6c2a1d8f9e0b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a"
+  path: "data/humaneval_test.jsonl"
+  complexity_tiers:
+    easy:
+      max_cc: 3
+      count: 62
+    medium:
+      min_cc: 4
+      max_cc: 6
+      count: 68
+    hard:
+      min_cc: 7
+      count: 34
+
+models:
+  baseline1:
+    id: "gemini-3.1-flash-lite"
+    alias: "B1-Flash-ZS"
+    legacy_report_name: "gemini-3.1-flash"
+    display_name: "gemini-3.1-flash-lite (Zero-Shot)"
+    role: "Simple Baseline"
+    prompt_type: "zero_shot"
+    temperature: 0.1
+    top_p: 0.95
+    max_output_tokens: 2048
+
+  baseline2:
+    id: "gemini-3.5-flash-lite"
+    alias: "B2-Pro-ZS"
+    legacy_report_name: "gemini-3.1-pro"
+    display_name: "gemini-3.5-flash-lite (Zero-Shot)"
+    role: "Strong Literature Baseline"
+    prompt_type: "zero_shot"
+    temperature: 0.1
+    top_p: 0.95
+    max_output_tokens: 2048
+
+  proposed:
+    id: "gemini-3.5-flash-lite"
+    alias: "P3-Pro-CoT"
+    legacy_report_name: "gemini-3.1-pro"
+    display_name: "gemini-3.5-flash-lite (Structured CoT)"
+    role: "Proposed Method"
+    prompt_type: "cot"
+    temperature: 0.1
+    top_p: 0.95
+    max_output_tokens: 2048
+
+evaluation:
+  seeds: [42, 100, 2026]
+  primary_seed: 42
+  bootstrap_resamples: 10000
+  alpha: 0.05
+  sandbox:
+    timeout_seconds: 3.0
+    memory_limit_mb: 512
+    isolation: "multiprocessing"
+
+prompts:
+  zero_shot: |
+    You are an expert Python algorithmic programmer. Complete the following Python function according to its docstring and specifications.
+    
+    Return your answer in the following exact format:
+    ```python
+    # Complete Python implementation
+    ```
+    
+    ```explanation
+    # Concise explanation of your solution, boundary conditions, and time/space complexity (Big-O).
+    ```
+    
+    Task specification:
+    {prompt}
+
+  cot: |
+    You are an expert Python algorithmic programmer. Solve the following programming task using structured step-by-step reasoning.
+    
+    Follow this exact three-stage output format:
+    ```reasoning
+    1. Problem Analysis & Invariant Conditions: Identify core requirements and invariants.
+    2. Edge Cases & Boundary Conditions: Explicitly enumerate corner cases (empty collections, 0, negative integers, single elements, off-by-one bounds).
+    3. Algorithmic Strategy & Complexity: Outline the chosen data structures and target Big-O time and space complexity.
+    ```
+    
+    ```python
+    # Complete, production-grade Python code implementing the function.
+    ```
+    
+    ```explanation
+    Line-mapped explanation explaining how each block handles the edge cases and verifies the invariants.
+    ```
+    
+    Task specification:
+    {prompt}

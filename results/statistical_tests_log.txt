@@ -1,0 +1,94 @@
+================================================================================
+ASSIGNMENT 4: FORMAL STATISTICAL INFERENCE AND HYPOTHESIS TESTING LOG
+Research Title: The Limits of LLM Reliability in Algorithmic Problem-Solving
+Authors: Ibragim Nurkassym, Orken Zhilkibek, Zhandos Tenglesbayev (SE-2414)
+================================================================================
+
+1. OVERALL FUNCTIONAL CORRECTNESS (Pass@1) AND VARIABILITY ACROSS R = 3 SEEDS
+--------------------------------------------------------------------------------
+Condition                                Pass@1 (%) (μ ± σ)     95% Bootstrap CI     Passed Tasks (Seed 42)
+--------------------------------------------------------------------------------
+B1: gemini-3.1-flash-lite (Zero-Shot)    74.39% ± 0.61% (122.0/164)   [67.68%, 81.10%]   122/164 (74.39%)
+B2: gemini-3.5-flash-lite (Zero-Shot)    81.91% ± 0.35% (134.3/164)   [75.61%, 87.20%]   134/164 (81.71%)
+P3: gemini-3.5-flash-lite (Proposed CoT) 86.99% ± 0.35% (142.7/164)   [81.71%, 92.07%]   143/164 (87.20%)
+
+
+2. OMNIBUS HYPOTHESIS TESTING ACROSS 3 CONDITIONS (PRIMARY SEED = 42)
+--------------------------------------------------------------------------------
+Cochran's Q Test Statistic: Q = 23.79, degrees of freedom df = 2, p-value = 6.84e-06
+=> Conclusion: Highly statistically significant omnibus difference across conditions (p < 0.001). Proceed to pairwise testing.
+
+
+3. PAIRWISE HYPOTHESIS TESTING (EXACT MCNEMAR TESTS WITH HOLM-BONFERRONI CORRECTION)
+--------------------------------------------------------------------------------
+
+Comparison: P3: gemini-3.5-flash-lite (CoT) vs B1: gemini-3.1-flash-lite (Zero-Shot)
+  Contingency Table (2x2):
+    Both Passed:                   120
+    Condition A Passed, B Failed (b):  23
+    Condition A Failed, B Passed (c):   2
+    Both Failed:                    19
+  McNemar's Chi-squared (continuity corrected): χ² = 16.00
+  Exact Binomial p-value (raw):                  p = 1.9431e-05 (0.0000)
+  Holm-Bonferroni Adjusted p-value:              p_Holm = 5.8293e-05 (0.0001)
+  Effect Size: Odds Ratio OR = 11.50, Cohen's g = 0.42
+  Outcome: STATISTICALLY SIGNIFICANT (p_Holm < 0.05)
+
+Comparison: P3: gemini-3.5-flash-lite (CoT) vs B2: gemini-3.5-flash-lite (Zero-Shot)
+  Contingency Table (2x2):
+    Both Passed:                   132
+    Condition A Passed, B Failed (b):  11
+    Condition A Failed, B Passed (c):   2
+    Both Failed:                    19
+  McNemar's Chi-squared (continuity corrected): χ² = 4.92
+  Exact Binomial p-value (raw):                  p = 2.2461e-02 (0.0225)
+  Holm-Bonferroni Adjusted p-value:              p_Holm = 2.2461e-02 (0.0225)
+  Effect Size: Odds Ratio OR = 5.50, Cohen's g = 0.35
+  Outcome: STATISTICALLY SIGNIFICANT (p_Holm < 0.05)
+
+Comparison: B2: gemini-3.5-flash-lite (Zero-Shot) vs B1: gemini-3.1-flash-lite (Zero-Shot)
+  Contingency Table (2x2):
+    Both Passed:                   119
+    Condition A Passed, B Failed (b):  15
+    Condition A Failed, B Passed (c):   3
+    Both Failed:                    27
+  McNemar's Chi-squared (continuity corrected): χ² = 6.72
+  Exact Binomial p-value (raw):                  p = 7.5378e-03 (0.0075)
+  Holm-Bonferroni Adjusted p-value:              p_Holm = 1.5076e-02 (0.0151)
+  Effect Size: Odds Ratio OR = 5.00, Cohen's g = 0.33
+  Outcome: STATISTICALLY SIGNIFICANT (p_Holm < 0.05)
+
+
+4. SECONDARY METRIC TESTING: EXPLANATORY ACCURACY & LATENCY DISTRIBUTIONS
+--------------------------------------------------------------------------------
+Explanatory Accuracy (P3 vs B1): Wilcoxon W = 0.0, p = 1.15e-28
+Explanatory Accuracy (P3 vs B2): Wilcoxon W = 0.0, p = 3.53e-28
+
+Latency Divergence in P3 (Failed vs Passed tasks):
+  Passed Tasks Median Latency: 5.43 s [IQR: 4.88, 5.93]
+  Failed Tasks Median Latency: 6.80 s [IQR: 6.43, 7.42]
+  Mann-Whitney U Statistic:   U = 2779.5, p = 0.0000
+
+
+5. SUBGROUP ANALYSIS BY CYCLOMATIC COMPLEXITY (TABLE 2 IN REPORT)
+--------------------------------------------------------------------------------
+Complexity Tier      B1 Pass@1 (%)      B2 Pass@1 (%)      P3 Pass@1 (%)      P3 Explanatory Score
+--------------------------------------------------------------------------------
+Easy                 80.65% (50/62)     85.48% (53/62)     95.16% (59/62)     4.59
+Medium               75.00% (51/68)     86.76% (59/68)     88.24% (60/68)     4.46
+Hard                 61.76% (21/34)     64.71% (22/34)     70.59% (24/34)     4.55
+
+
+6. SENSITIVITY ANALYSIS ACROSS SAMPLING TEMPERATURE T (TABLE 2 LOWER)
+--------------------------------------------------------------------------------
+Setting (Temperature)     B1 Pass@1 (%)      B2 Pass@1 (%)      P3 Pass@1 (%)      P3 Explanatory Score
+--------------------------------------------------------------------------------
+T = 0.0 (Greedy Decoding) 74.39%             81.71%             87.20%             4.55                
+T = 0.2 (Low Variance)    73.78%             81.10%             86.59%             4.51                
+T = 0.5 (Moderate Sampling) 70.12%             78.66%             84.15%             4.38                
+T = 0.8 (High Creativity) 64.63%             73.17%             79.27%             4.12                
+T = 1.0 (Unconstrained)   57.93%             67.68%             73.78%             3.84                
+
+================================================================================
+ALL STATISTICAL HYPOTHESES VERIFIED AND EXPORTED TO LOG.
+================================================================================

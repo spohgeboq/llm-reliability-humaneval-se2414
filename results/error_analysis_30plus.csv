@@ -1,0 +1,43 @@
+Task_ID,Complexity_Tier,B1_Error_Type,B1_Execution_Status,P3_Resolution_Status,Latency_B1_s,Latency_P3_s,Failure_Detail
+HumanEval/3,Easy,Boundary & Off-by-One,FAILED_ASSERTION,Failed (Boundary & Off-by-One),1.35,6.65,Assertion failed
+HumanEval/4,Easy,Boundary & Off-by-One,FAILED_ASSERTION,Failed (Boundary & Off-by-One),1.89,8.42,Assertion failed
+HumanEval/7,Easy,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Passed,1.39,5.33,Assertion failed
+HumanEval/10,Easy,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Failed (Algorithmic Logic & Invariant Flaw),1.39,6.8,Assertion failed
+HumanEval/20,Hard,Boundary & Off-by-One,BOUNDARY_INDEX_ERROR,Failed (Boundary & Off-by-One),1.59,7.42,IndexError: list index out of range
+HumanEval/25,Medium,Boundary & Off-by-One,FAILED_ASSERTION,Failed (Boundary & Off-by-One),1.24,6.3,Assertion failed
+HumanEval/32,Medium,Syntax / Formatting & Missing Import,NAME_ERROR,Failed (Syntax / Formatting & Missing Import),1.33,6.59,NameError: name 'poly' is not defined
+HumanEval/37,Easy,Boundary & Off-by-One,BOUNDARY_INDEX_ERROR,Passed,1.59,5.91,IndexError: list index out of range
+HumanEval/38,Medium,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Failed (Algorithmic Logic & Invariant Flaw),1.32,6.54,Assertion failed
+HumanEval/39,Hard,Boundary & Off-by-One,RUNTIME_ERROR,Failed (Boundary & Off-by-One),1.84,8.25,TypeError: object of type 'int' has no len()
+HumanEval/55,Medium,Timeout / Infinite Loop Hang,TIMEOUT,Failed (Timeout / Infinite Loop Hang),1.54,7.28,Process exceeded watchdog timeout threshold of 3.0s
+HumanEval/64,Medium,Boundary & Off-by-One,FAILED_ASSERTION,Passed,1.31,5.1,Test 5
+HumanEval/65,Easy,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Passed,1.57,5.83,Assertion failed
+HumanEval/67,Medium,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Passed,1.55,5.79,Assertion failed
+HumanEval/75,Hard,Boundary & Off-by-One,RUNTIME_ERROR,Failed (Boundary & Off-by-One),1.75,7.95,TypeError: object of type 'int' has no len()
+HumanEval/78,Medium,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Passed,1.27,4.99,First test error: None
+HumanEval/83,Easy,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Passed,1.31,5.1,Assertion failed
+HumanEval/84,Easy,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Passed,1.01,4.22,Error
+HumanEval/89,Medium,Boundary & Off-by-One,BOUNDARY_INDEX_ERROR,Passed,1.22,4.84,IndexError: string index out of range
+HumanEval/91,Easy,Timeout / Infinite Loop Hang,TIMEOUT,Passed,1.57,5.84,Process exceeded watchdog timeout threshold of 3.0s
+HumanEval/95,Hard,Illusion of Competence (Divergence),FAILED_ASSERTION,Failed (Illusion of Competence (Divergence)),1.37,6.73,First test error: False
+HumanEval/99,Hard,Illusion of Competence (Divergence),FAILED_ASSERTION,Failed (Illusion of Competence (Divergence)),1.61,7.52,Test 2
+HumanEval/102,Medium,Boundary & Off-by-One,RUNTIME_ERROR,Passed,1.24,4.89,TypeError: object of type 'int' has no len()
+HumanEval/109,Medium,Illusion of Competence (Divergence),FAILED_ASSERTION,Passed,1.2,4.77,This prints if this assert fails 1 (good for debugging!)
+HumanEval/111,Hard,Illusion of Competence (Divergence),FAILED_ASSERTION,Failed (Illusion of Competence (Divergence)),1.45,6.98,This prints if this assert fails 1 (good for debugging!)
+HumanEval/114,Medium,Boundary & Off-by-One,FAILED_ASSERTION,Passed,1.49,5.61,This prints if this assert fails 1 (good for debugging!)
+HumanEval/115,Easy,Boundary & Off-by-One,BOUNDARY_INDEX_ERROR,Passed,1.2,4.77,IndexError: list index out of range
+HumanEval/119,Hard,Timeout / Infinite Loop Hang,TIMEOUT,Passed,0.95,3.99,Process exceeded watchdog timeout threshold of 3.0s
+HumanEval/124,Hard,Illusion of Competence (Divergence),FAILED_ASSERTION,Passed,0.96,4.08,Assertion failed
+HumanEval/127,Hard,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Failed (Algorithmic Logic & Invariant Flaw),1.68,7.73,Assertion failed
+HumanEval/129,Hard,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Failed (Algorithmic Logic & Invariant Flaw),1.45,6.97,Assertion failed
+HumanEval/130,Medium,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Failed (Algorithmic Logic & Invariant Flaw),1.25,6.34,Assertion failed
+HumanEval/132,Hard,Illusion of Competence (Divergence),FAILED_ASSERTION,Failed (Illusion of Competence (Divergence)),1.14,5.95,Assertion failed
+HumanEval/134,Medium,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Passed,1.79,6.47,Assertion failed
+HumanEval/135,Medium,Boundary & Off-by-One,BOUNDARY_INDEX_ERROR,Passed,1.49,5.61,IndexError: list index out of range
+HumanEval/136,Medium,Boundary & Off-by-One,BOUNDARY_INDEX_ERROR,Passed,1.59,5.9,IndexError: list index out of range
+HumanEval/140,Hard,Illusion of Competence (Divergence),FAILED_ASSERTION,Passed,0.99,4.16,This prints if this assert fails 1 (good for debugging!)
+HumanEval/141,Hard,Syntax / Formatting & Missing Import,NAME_ERROR,Failed (Syntax / Formatting & Missing Import),1.28,6.43,NameError: name 'file_name' is not defined
+HumanEval/144,Easy,Boundary & Off-by-One,BOUNDARY_INDEX_ERROR,Passed,1.1,4.47,IndexError: string index out of range
+HumanEval/145,Medium,Timeout / Infinite Loop Hang,TIMEOUT,Failed (Timeout / Infinite Loop Hang),1.14,5.97,Process exceeded watchdog timeout threshold of 3.0s
+HumanEval/158,Easy,Algorithmic Logic & Invariant Flaw,FAILED_ASSERTION,Passed,1.77,6.42,t1
+HumanEval/163,Medium,Timeout / Infinite Loop Hang,TIMEOUT,Passed,1.62,5.99,Process exceeded watchdog timeout threshold of 3.0s
